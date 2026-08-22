@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://woodstockplumbingpros.ca/sitemap-index.xml
