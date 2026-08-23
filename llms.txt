@@ -1,2 +1,25 @@
 # Woodstock Plumbing Pros
-HVAC services in Ontario.
+
+> Woodstock Plumbing Pros is a local HVAC company serving Woodstock, Oxford, Ontario, offering furnace repair, AC repair, ductless mini-split installation, heat pump repair and installation, fireplace installation, thermostat repair, and duct cleaning to homeowners across the region.
+
+Phone: (548) 554-3147  |  Email: contact@woodstockplumbingpros.ca  |  Website: https://woodstockplumbingpros.ca
+
+## Key pages
+
+- [Home](https://woodstockplumbingpros.ca/): Woodstock Plumbing Pros homepage with service overview and FAQ
+- [About](https://woodstockplumbingpros.ca/about/): About the company and service area
+- [Contact](https://woodstockplumbingpros.ca/contact/): Request a free quote or service call
+
+## Services
+
+- [Water Heaters](https://woodstockplumbingpros.ca/services/water-heaters/): Water Heaters in Woodstock, Ontario
+- [Drain Cleaning](https://woodstockplumbingpros.ca/services/drain-cleaning/): Drain Cleaning in Woodstock, Ontario
+- [Repiping](https://woodstockplumbingpros.ca/services/repiping/): Repiping in Woodstock, Ontario
+- [Fixtures & Toilets](https://woodstockplumbingpros.ca/services/fixtures-toilets/): Fixtures & Toilets in Woodstock, Ontario
+- [Leak Detection & Repair](https://woodstockplumbingpros.ca/services/leak-detection/): Leak Detection & Repair in Woodstock, Ontario
+- [Sump Pumps & Backwater](https://woodstockplumbingpros.ca/services/sump-pumps/): Sump Pumps & Backwater in Woodstock, Ontario
+- [Water Softeners & Filtration](https://woodstockplumbingpros.ca/services/water-softeners/): Water Softeners & Filtration in Woodstock, Ontario
+
+## FAQ
+
+Common questions about HVAC service in Woodstock are answered on the homepage.
