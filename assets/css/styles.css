@@ -700,7 +700,7 @@ textarea { resize: vertical; min-height: 100px; }
 .faq__a p { margin: 0; }
 
 /* ---------- Areas ---------- */
-.areas { display: flex; flex-wrap: wrap; gap: 10px; justify-content: left; list-style: none; padding: 0; margin: 0; }
+.areas { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; list-style: none; padding: 0; margin: 0; }
 .areas li a, .area-pill {
   display: inline-flex; align-items: center; gap: 8px;
   padding: 10px 20px; background: var(--card-bg);
