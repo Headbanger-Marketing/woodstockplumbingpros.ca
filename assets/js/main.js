@@ -143,8 +143,8 @@
         if (status) {
           status.className = "form-status " + (ok ? "ok" : "err");
           status.textContent = ok
-            ? "✓ Thank you! Your request has been received. A local technician will get back to you shortly."
-            : "We couldn't submit your request. Please email contact@" + window.location.hostname + " and we'll respond right away.";
+            ? "Thank you. Your request has been received for review. The responding provider will confirm availability and next steps."
+            : "We could not submit your request. Your details are still here. Please try again, or email contact@" + window.location.hostname + ".";
         }
         if (ok) form.reset();
         if (btn) { btn.disabled = false; btn.textContent = btn.dataset.label || "Submit"; }
