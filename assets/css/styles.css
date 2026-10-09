@@ -1015,3 +1015,8 @@ img.responsive { width: 100%; height: auto; }
 .quote-card--enquiry .input { padding: 11px 13px; }
 .quote-card--enquiry textarea { min-height: 88px; }
 .quote-card--enquiry .sub { margin-bottom: 16px; }
+
+/* Text-only per-domain wordmarks for the new enquiry sites. */
+.site-header .site-wordmark { display:block; width:auto; height:48px; max-width:min(260px,65vw); object-fit:contain; object-position:left center; }
+.site-footer .site-wordmark { display:block; width:auto; height:54px; max-width:100%; object-fit:contain; object-position:left center; }
+@media(max-width:600px){ .site-header .site-wordmark { height:42px; max-width:65vw; } }
