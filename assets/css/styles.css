@@ -1008,3 +1008,10 @@ img.responsive { width: 100%; height: auto; }
 .media-photo{width:100%;height:auto;display:block;border-radius:18px;object-fit:cover;box-shadow:0 22px 48px -26px rgba(0,0,0,.5)}
 .svc-photo{width:100%;height:auto;display:block;border-radius:16px;margin:0 0 22px;object-fit:cover;max-height:420px}
 .badge-img{height:88px;width:auto;display:block}
+
+/* Compact new enquiry forms keep the request action visible beside the short hero. */
+.quote-card--enquiry { padding: 26px; }
+.quote-card--enquiry .form-grid { gap: 12px; }
+.quote-card--enquiry .input { padding: 11px 13px; }
+.quote-card--enquiry textarea { min-height: 88px; }
+.quote-card--enquiry .sub { margin-bottom: 16px; }

@@ -137,26 +137,50 @@
       payload.append("source_url", window.location.href);
       payload.append("date_created", stamp);
 
-      var done = function (ok) {
+      var isEnquiry = form.dataset.enquirySite === "true";
+      var requestController = isEnquiry && typeof AbortController !== "undefined" ? new AbortController() : null;
+      var receiptTimer = null;
+      var settled = false;
+      var done = function (ok, timedOut) {
+        if (settled) return;
+        settled = true;
+        if (receiptTimer) clearTimeout(receiptTimer);
         /* Redirect only after the intake endpoint accepts the request. */
         if (ok && form.dataset.redirectOnSuccess) { window.location.href = form.dataset.redirectOnSuccess; return; }
         if (status) {
           status.className = "form-status " + (ok ? "ok" : "err");
           status.textContent = ok
-            ? "Thank you. Your request has been received for review. The responding provider will confirm availability and next steps."
-            : "We could not submit your request. Your details are still here. Please try again, or email contact@" + window.location.hostname + ".";
+            ? (form.dataset.enquirySite === "true" ? "Thank you. Headbanger Marketing has received your inquiry for review. A provider and appointment remain unconfirmed." : "Thank you. Your request has been received for review. The responding provider will confirm availability and next steps.")
+            : (timedOut ? "We could not confirm receipt of your inquiry. Your details are still here. Please try again, or email contact@" + window.location.hostname + "." : "We could not submit your request. Your details are still here. Please try again, or email contact@" + window.location.hostname + ".");
         }
         if (ok) form.reset();
         if (btn) { btn.disabled = false; btn.textContent = btn.dataset.label || "Submit"; }
       };
 
+      /* A new inquiry must recover after a timeout, with receipt left unconfirmed. */
+      if (isEnquiry) receiptTimer = setTimeout(function () {
+        done(false, true);
+        if (requestController) requestController.abort();
+      }, 15000);
       /* Read the intake acknowledgement before confirming receipt. */
       fetch(LEAD_WEBHOOK, {
         method: "POST",
         mode: "cors",
         headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
-        body: payload.toString()
-      }).then(function (response) { done(response.ok); }).catch(function () { done(false); });
+        body: payload.toString(),
+        ...(requestController ? { signal: requestController.signal } : {})
+      }).then(function (response) {
+        if (!response.ok) { done(false); return; }
+        if (!isEnquiry) { done(true); return; }
+        var contentType = response.headers.get("content-type") || "";
+        if (contentType.toLowerCase().indexOf("json") === -1) { done(true); return; }
+        return response.json().then(function (acknowledgement) {
+          var accepted = acknowledgement && typeof acknowledgement === "object" && !Array.isArray(acknowledgement)
+            && acknowledgement.accepted !== false && acknowledgement.success !== false && acknowledgement.ok !== false
+            && !acknowledgement.error;
+          done(!!accepted);
+        });
+      }).catch(function () { done(false); });
     });
 
     /* clear invalid state on input */
