@@ -250,6 +250,7 @@
       if (service) payload.append("service", service);
       if (form.querySelector('[name="consent"]')) payload.append("consent", "contact_and_provider_assessment_agreed");
       if (electrical) { payload.append("source_domain", form.dataset.domain); payload.append("trade", "Electrical"); payload.append("service", service); }
+      try { sessionStorage.removeItem("quote-confirmation"); } catch (_) {}
       busy = true;
       if (button) button.disabled = true;
       form.setAttribute("aria-busy", "true");
@@ -267,8 +268,9 @@
         received = true;
         form.dataset.receiptConfirmed = "true";
         showStatus(true, "Thank you. Headbanger Marketing has received your request for Jayden's Mechanical to review. Coverage, availability and any appointment require separate confirmation. " + (submittedChannel === "phone" ? "Watch for a phone call using the number you provided." : "Check the email address you provided for follow-up."));
-        try { sessionStorage.removeItem("quote-context"); sessionStorage.setItem("quote-confirmation", JSON.stringify({ channel: submittedChannel, time: Date.now() })); } catch (_) {}
-        if (form.dataset.redirectOnSuccess) window.location.href = form.dataset.redirectOnSuccess;
+        var confirmationStored = false;
+        try { sessionStorage.removeItem("quote-context"); sessionStorage.setItem("quote-confirmation", JSON.stringify({ channel: submittedChannel, time: Date.now() })); confirmationStored = true; } catch (_) {}
+        if (confirmationStored && form.dataset.redirectOnSuccess) window.location.href = form.dataset.redirectOnSuccess;
       } catch (error) {
         showStatus(false, "We could not confirm receipt. Your request may already have reached intake. Your details are still here. Email contact@" + (form.dataset.domain || window.location.hostname) + " to confirm before sending again.");
       } finally {
@@ -276,8 +278,7 @@
         busy = false;
         form.removeAttribute("aria-busy");
         if (button) button.disabled = received;
-        if (status && !form.dataset.redirectOnSuccess) status.focus({ preventScroll: true });
-        else if (status && !received) status.focus({ preventScroll: true });
+        if (status) status.focus({ preventScroll: true });
       }
     });
     form.dataset.leadSubmitBound = "true";
