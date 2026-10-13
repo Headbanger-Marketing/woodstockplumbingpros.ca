@@ -1020,3 +1020,13 @@ img.responsive { width: 100%; height: auto; }
 .site-header .site-wordmark { display:block; width:auto; height:48px; max-width:min(260px,65vw); object-fit:contain; object-position:left center; }
 .site-footer .site-wordmark { display:block; width:auto; height:54px; max-width:100%; object-fit:contain; object-position:left center; }
 @media(max-width:600px){ .site-header .site-wordmark { height:42px; max-width:65vw; } }
+
+/* Keep the quote destination stable and optional contact controls out of the tab order. */
+#quote { scroll-margin-top: 150px; }
+[data-contact-field][hidden] { display: none !important; }
+.optional-details summary { cursor: pointer; font-size: .84rem; font-weight: 600; }
+.optional-details[open] > .field { margin-top: 12px; }
+.recipient-note { font-size: .78rem; line-height: 1.5; color: var(--muted); margin: 0; }
+.quote-consent { display: flex; gap: 10px; align-items: flex-start; font-size: .78rem; line-height: 1.5; font-weight: 400; }
+.quote-consent input { width: 18px; height: 18px; flex: none; margin-top: 3px; }
+.form-status:focus { outline: 2px solid var(--accent); outline-offset: 3px; }
