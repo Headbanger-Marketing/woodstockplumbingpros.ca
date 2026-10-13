@@ -31,22 +31,26 @@
        scroll container and the viewport jump-clamps the scroll position when
        the menu opens (header + drawer flew offscreen on scrolled pages). */
     d.documentElement.style.overflow = open && window.innerWidth <= 1000 ? "hidden" : "";
+    if (window.innerWidth <= 1000) {
+      if (open) requestAnimationFrame(function () { var first = nav.querySelector("a,button"); if (first) first.focus(); });
+      else if (nav.contains(d.activeElement)) toggle.focus();
+    }
   }
   if (toggle) toggle.addEventListener("click", function () {
     setNav(!nav.classList.contains("open"));
   });
   if (backdrop) backdrop.addEventListener("click", function () { setNav(false); });
 
-  /* Mobile dropdown accordion (only on small screens) */
-  d.querySelectorAll(".has-dropdown > .nav__link").forEach(function (link) {
-    link.addEventListener("click", function (e) {
-      if (window.innerWidth <= 1000) {
-        e.preventDefault();
-        var open = link.parentElement.classList.toggle("open");
-        link.setAttribute("aria-expanded", open ? "true" : "false");
-      }
-    });
+  d.querySelectorAll(".has-dropdown").forEach(function (dropdown) {
+    var button = dropdown.querySelector("button.nav__link");
+    function open(state) { dropdown.classList.toggle("open", state); button.setAttribute("aria-expanded", String(state)); }
+    button.addEventListener("click", function () { open(!dropdown.classList.contains("open")); });
+    dropdown.addEventListener("mouseenter", function () { if (innerWidth > 1000) open(true); });
+    dropdown.addEventListener("mouseleave", function () { if (innerWidth > 1000 && !dropdown.contains(d.activeElement)) open(false); });
+    dropdown.addEventListener("focusout", function (event) { if (!dropdown.contains(event.relatedTarget)) open(false); });
+    dropdown.addEventListener("keydown", function (event) { if (event.key === "Escape" && dropdown.classList.contains("open")) { open(false); button.focus(); event.stopPropagation(); } });
   });
+  d.addEventListener("keydown", function (event) { if (event.key === "Escape" && nav && nav.classList.contains("open")) { setNav(false); toggle.focus(); } });
 
   /* Close nav on link tap + on resize to desktop */
   d.querySelectorAll(".nav a:not(.has-dropdown > .nav__link)").forEach(function (a) {
@@ -105,6 +109,15 @@
   var d = document;
   var webhook = "https://auto.sdagents.ai/webhook/hvac-sites";
   var forms = d.querySelectorAll("form[data-quote-form], form[data-enquiry-form]");
+  function sourceUrl(path, search) {
+    var url = new URL(path || window.location.pathname, window.location.origin);
+    var query = new URLSearchParams(search === undefined ? window.location.search : search);
+    ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "gclid", "gbraid", "wbraid", "fbclid"].forEach(function (key) {
+      if (query.has(key)) url.searchParams.set(key, query.get(key).slice(0, 512));
+    });
+    return url.href;
+  }
+
 
   function focusQuote() {
     if (window.location.hash !== "#quote") return;
@@ -120,7 +133,16 @@
     var link = event.target.closest && event.target.closest('a[href]');
     if (!link) return;
     var destination = new URL(link.href, window.location.href);
-    if (destination.origin === window.location.origin && destination.pathname === window.location.pathname && destination.hash === "#quote") requestAnimationFrame(focusQuote);
+    if (destination.origin === window.location.origin && destination.hash === "#quote") {
+      var source = window.location.pathname === "/contact/" && forms[0] && forms[0].dataset.sourceUrl ? forms[0].dataset.sourceUrl : sourceUrl();
+      var sourcePath = new URL(source).pathname;
+      var slug = sourcePath.match(/^\/services\/([a-z0-9-]+)\/$/);
+      try { sessionStorage.setItem("quote-context", JSON.stringify({ path: sourcePath, search: new URL(source).search, service: slug ? slug[1] : "", time: Date.now() })); } catch (_) {}
+      forms.forEach(function (form) { form.dataset.sourceUrl = source; });
+      if (d.getElementById("quote")) {
+        event.preventDefault(); window.location.hash = "quote"; requestAnimationFrame(focusQuote);
+      }
+    }
   });
   window.addEventListener("hashchange", focusQuote);
   window.addEventListener("load", focusQuote, { once: true });
@@ -128,12 +150,19 @@
 
   forms.forEach(function (form) {
     if (form.dataset.leadSubmitBound === "true") return;
-    form.dataset.leadSubmitBound = "true";
     var busy = false;
     var received = false;
     var status = form.querySelector(".form-status");
     var button = form.querySelector('button[type="submit"]');
     var preferred = form.querySelector('[name="preferred_contact"]');
+    try {
+      var context = JSON.parse(sessionStorage.getItem("quote-context") || "null");
+      if (window.location.pathname === "/contact/" && context && Date.now() - context.time < 3600000 && /^\/(?:services|blog|locations)\/[a-z0-9-]+\/$/.test(context.path)) {
+        form.dataset.sourceUrl = sourceUrl(context.path, context.search || "");
+        var serviceField = form.querySelector('[name="service"]');
+        if (serviceField && Array.from(serviceField.options).some(function (o) { return o.value === context.service; })) serviceField.value = context.service;
+      }
+    } catch (_) {}
     function contactChoice() {
       var choice = preferred ? preferred.value : "email";
       ["email", "phone"].forEach(function (name) {
@@ -210,12 +239,15 @@
       var message = value("message");
       var electrical = form.hasAttribute("data-enquiry-form");
       var service = value("service");
-      if (electrical && service) message = "Electrical project: " + service + "\n" + message;
+      var interest = form.querySelector('[name="service"] option:checked');
+      if (service) message = "Project interest: " + (interest ? interest.textContent.trim() : service) + "\n" + message;
+      var submittedChannel = value("preferred_contact");
       var payload = new URLSearchParams({
         "1.3": value("name"), "2": value("email"), "3": message, "4": value("phone"),
         "5.1": value("address"), "5.3": value("city"), "5.5": value("postal"),
-        source_url: window.location.href, date_created: stamp, preferred_contact: value("preferred_contact")
+        source_url: form.dataset.sourceUrl || sourceUrl(), date_created: stamp, preferred_contact: submittedChannel
       });
+      if (service) payload.append("service", service);
       if (form.querySelector('[name="consent"]')) payload.append("consent", "contact_and_provider_assessment_agreed");
       if (electrical) { payload.append("source_domain", form.dataset.domain); payload.append("trade", "Electrical"); payload.append("service", service); }
       busy = true;
@@ -234,7 +266,8 @@
         if (!accepted(ack)) throw new Error("Receipt unconfirmed");
         received = true;
         form.dataset.receiptConfirmed = "true";
-        showStatus(true, "Thank you. Headbanger Marketing has received your request for Jayden's Mechanical to review. Coverage, availability and any appointment require separate confirmation.");
+        showStatus(true, "Thank you. Headbanger Marketing has received your request for Jayden's Mechanical to review. Coverage, availability and any appointment require separate confirmation. " + (submittedChannel === "phone" ? "Watch for a phone call using the number you provided." : "Check the email address you provided for follow-up."));
+        try { sessionStorage.removeItem("quote-context"); sessionStorage.setItem("quote-confirmation", JSON.stringify({ channel: submittedChannel, time: Date.now() })); } catch (_) {}
         if (form.dataset.redirectOnSuccess) window.location.href = form.dataset.redirectOnSuccess;
       } catch (error) {
         showStatus(false, "We could not confirm receipt. Your request may already have reached intake. Your details are still here. Email contact@" + (form.dataset.domain || window.location.hostname) + " to confirm before sending again.");
@@ -247,5 +280,9 @@
         else if (status && !received) status.focus({ preventScroll: true });
       }
     });
+    form.dataset.leadSubmitBound = "true";
+    if (button) button.disabled = false;
+    var fallback = form.querySelector("[data-form-fallback]");
+    if (fallback) fallback.hidden = true;
   });
 })();

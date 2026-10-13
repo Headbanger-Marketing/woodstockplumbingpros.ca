@@ -1030,3 +1030,13 @@ img.responsive { width: 100%; height: auto; }
 .quote-consent { display: flex; gap: 10px; align-items: flex-start; font-size: .78rem; line-height: 1.5; font-weight: 400; }
 .quote-consent input { width: 18px; height: 18px; flex: none; margin-top: 3px; }
 .form-status:focus { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* Audit repairs retain the existing components and palette. */
+.form-fallback{font-size:.9rem;line-height:1.5;margin:0 0 14px}.form-fallback[hidden]{display:none}
+.nav button.nav__link{background:transparent;border:0;cursor:pointer}.nav button.nav__link:hover{color:var(--accent);background:var(--warm-gradient)}
+.nav .has-dropdown:not(.open) .dropdown{opacity:0;visibility:hidden;pointer-events:none}
+.nav .has-dropdown.open .dropdown{opacity:1;visibility:visible;pointer-events:auto;transform:none}
+.reveal,.js .reveal{opacity:1;transform:none;transition:none}
+@media(max-width:1000px){.nav .has-dropdown:not(.open) .dropdown{display:none}.nav .has-dropdown.open .dropdown{display:block}}
+
+@media(max-width:1000px){.nav button.nav__link{padding:14px 16px}}
