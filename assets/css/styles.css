@@ -153,29 +153,6 @@ p { margin: 0 0 1rem; }
 .btn-lg { padding: 18px 34px; font-size: 1.08rem; }
 .btn-block { width: 100%; }
 
-/* ---------- Utility bar ---------- */
-.topbar {
-  background: var(--navy);
-  color: #b9cce0;
-  font-size: .88rem;
-}
-.topbar .container {
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 14px; min-height: 46px; flex-wrap: wrap;
-}
-.topbar a { color: #dce8f5; font-weight: 600; }
-.topbar a:hover { color: #fff; }
-.topbar__left { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
-.topbar__item { display: inline-flex; align-items: center; gap: 7px; }
-.topbar__item svg { width: 15px; height: 15px; color: var(--accent-bright); }
-.topbar__right { display: inline-flex; align-items: center; gap: 7px; font-weight: 700; }
-.topbar__right svg { width: 15px; height: 15px; color: var(--accent-bright); }
-@media (max-width: 720px){
-  .topbar__left .topbar__item--areas { display: none; }
-  .topbar .container { justify-content: center; gap: 4px 20px; padding-block: 8px; min-height: 0; }
-  .topbar__left { justify-content: center; }
-}
-
 /* ---------- Header / Nav ---------- */
 .site-header {
   /* No backdrop-filter here: it makes the header the containing block for

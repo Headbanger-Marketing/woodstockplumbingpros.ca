@@ -3,7 +3,7 @@
   "use strict";
   var d = document;
 
-  /* Lead webhook — Headbanger n8n "HVAC Form Lead Tracking" (auto.sdagents.ai).
+  /* Lead webhook, service enquiry intake (auto.sdagents.ai).
      Field IDs match the workflow's Google Sheet / email / Telegram mappings. */
   var LEAD_WEBHOOK = "https://auto.sdagents.ai/webhook/hvac-sites";
 
