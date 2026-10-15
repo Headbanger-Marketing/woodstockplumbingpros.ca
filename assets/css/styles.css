@@ -105,8 +105,8 @@ p { margin: 0 0 1rem; }
 .bg-navy { background: var(--navy); color: #cfe0f0; }
 .section-head { max-width: 720px; margin: 0 auto clamp(36px, 4vw, 56px); text-align: center; }
 .section-head.left { margin-inline: 0; text-align: left; }
-.section-head p { color: var(--muted); font-size: 1.1rem; }
-.lead { font-size: 1.18rem; color: var(--body); }
+.section-head p { color: var(--muted);  }
+.lead {  color: var(--body); }
 .center { text-align: center; }
 
 /* ---------- Buttons ---------- */
@@ -774,7 +774,7 @@ textarea { resize: vertical; min-height: 100px; }
 .article { max-width: 760px; margin-inline: auto; }
 .article h2 { margin: 36px 0 14px; font-size: 1.6rem; }
 .article h3 { margin: 28px 0 10px; }
-.article p { color: var(--body); font-size: 1.08rem; }
+.article p { color: var(--body);  }
 .article ul.bullets { margin: 0 0 1rem; display: grid; gap: 10px; }
 .article ul.bullets li { position: relative; padding-left: 30px; color: var(--body); }
 .article ul.bullets li::before {
