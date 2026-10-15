@@ -22,7 +22,7 @@
 <meta content="https://woodstockplumbingpros.ca/assets/img/og-transparent-20261014.png" name="twitter:image"/>
 <link href="/assets/brand-media/woodstockplumbingpros.ca-transparent-v1.png" rel="icon" type="image/png"/><link href="/assets/brand-media/woodstockplumbingpros.ca-transparent-v1.png" rel="apple-touch-icon"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
-<link href="/assets/css/styles.css?v=5c940eaecb22" rel="stylesheet"/>
+<link href="/assets/css/styles.css?v=a232c47aec9c" rel="stylesheet"/>
 <style>.hero.has-bg, .page-hero.has-bg { background-image: url('/assets/img/heroes/woodstockplumbingpros.ca.webp'); }</style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Plumber","@id":"https://woodstockplumbingpros.ca/#business",
@@ -86,12 +86,12 @@
 </div>
 </div>
 <div class="split__media">
-<div style="position:sticky;top:96px"><form aria-label="Get A Free Quote" class="quote-card" data-domain="woodstockplumbingpros.ca" data-quote-form="" data-redirect-on-success="/thank-you/" id="quote" method="post" novalidate="" onsubmit="if(this.dataset.leadSubmitBound!=='true')return false">
+<div style="position:sticky;top:96px"><form aria-label="Get a Free Quote" class="quote-card" data-domain="woodstockplumbingpros.ca" data-quote-contract="2026-10-15" data-quote-form="" data-redirect-on-success="/thank-you/" id="quote" method="post" novalidate="" onsubmit="if(this.dataset.leadSubmitBound!=='true')return false">
 <div class="quote-card__head">
 <span class="badge"><svg aria-hidden="true" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M3 11h3a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"></path><path d="M18 11h3v7a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-6a1 1 0 0 1 1-1z"></path><path d="M3 11a9 9 0 0 1 18 0"></path><path d="M18 19a3 3 0 0 1-3 3h-3"></path></svg></span>
-<div><p class="quote-card__title" style="font-size:1.15rem;font-weight:700;margin:0;line-height:1.2;color:var(--ink)">Get A Free Quote</p></div>
+<div><p class="quote-card__title" data-quote-heading="" style="font-size:1.15rem;font-weight:700;margin:0;line-height:1.2;color:var(--ink)">Get a Free Quote</p></div>
 </div>
-<p class="sub">Describe the job at your Innerkip property so scope and availability can be confirmed.</p>
+<p class="sub" data-quote-support="">Tell us about your plumbing issue.</p>
 <p class="form-fallback" data-form-fallback="">If the form is unavailable, email <a href="mailto:contact@woodstockplumbingpros.ca">contact@woodstockplumbingpros.ca</a> with your request.</p>
 <div aria-live="polite" class="form-status" role="status" tabindex="-1"></div>
 <div class="form-grid">
@@ -100,31 +100,44 @@
 <input aria-describedby="name-error-loc-innerkip" autocomplete="name" class="input" id="name-loc-innerkip" maxlength="100" name="name" placeholder="Jane Doe" required="" type="text"/>
 <span class="error-text" id="name-error-loc-innerkip">Please enter your name.</span>
 </div>
+<div class="field row">
+<div class="field" data-contact-field="phone" data-field="">
+<label for="phone-loc-innerkip">Phone <span class="req">*</span></label>
+<input aria-describedby="phone-error-loc-innerkip" autocomplete="tel" class="input" id="phone-loc-innerkip" inputmode="tel" maxlength="40" name="phone" placeholder="(905) 000-0000" required="" type="tel"/>
+<span class="error-text" id="phone-error-loc-innerkip">Enter a valid phone number with at least 10 digits.</span>
+</div>
 <div class="field" data-contact-field="email" data-field="">
 <label for="email-loc-innerkip">Email <span class="req">*</span></label>
 <input aria-describedby="email-error-loc-innerkip" autocomplete="email" class="input" id="email-loc-innerkip" maxlength="254" name="email" placeholder="you@email.com" required="" type="email"/>
 <span class="error-text" id="email-error-loc-innerkip">Enter a valid email address.</span>
 </div>
-<div class="field" data-contact-field="phone" data-field="">
-<label for="phone-loc-innerkip">Phone (optional)</label>
-<input aria-describedby="phone-error-loc-innerkip" autocomplete="tel" class="input" id="phone-loc-innerkip" inputmode="tel" maxlength="40" name="phone" placeholder="(905) 000-0000" type="tel"/>
-<span class="error-text" id="phone-error-loc-innerkip">Enter a valid phone number with at least 10 digits.</span>
 </div>
 <div class="field" data-field="">
+<label for="addr-loc-innerkip">Street Address</label>
+<input autocomplete="address-line1" class="input" id="addr-loc-innerkip" maxlength="254" name="address" placeholder="123 Main St" type="text"/>
+</div>
+<div class="field row">
+<div class="field" data-field="">
 <label for="city-loc-innerkip">City <span class="req">*</span></label>
-<input aria-describedby="city-error-loc-innerkip" autocomplete="address-level2" class="input" id="city-loc-innerkip" maxlength="100" name="city" required="" type="text" value="Woodstock"/>
+<input aria-describedby="city-error-loc-innerkip" autocomplete="address-level2" class="input" id="city-loc-innerkip" maxlength="100" name="city" placeholder="Woodstock" required="" type="text"/>
 <span class="error-text" id="city-error-loc-innerkip">Enter the property city.</span>
 </div>
 <div class="field" data-field="">
-<label for="msg-loc-innerkip">Briefly describe your request <span class="req">*</span></label>
+<label for="postal-loc-innerkip">Postal Code <span class="req">*</span></label>
+<input aria-describedby="postal-error-loc-innerkip" autocomplete="postal-code" class="input" id="postal-loc-innerkip" maxlength="7" name="postal" placeholder="N1A 1A1" required="" type="text"/>
+<span class="error-text" id="postal-error-loc-innerkip">Enter a valid Canadian postal code.</span>
+</div>
+</div>
+<div class="field" data-field="">
+<label for="service-loc-innerkip">Work to discuss</label>
+<select class="input" id="service-loc-innerkip" name="service"><option value="">Choose the work</option><option value="water-heaters">Water Heaters</option><option value="drain-cleaning">Drain Cleaning</option><option value="repiping">Repiping</option><option value="fixtures-toilets">Fixtures &amp; Toilets</option><option value="leak-detection">Leak Detection &amp; Repair</option><option value="sump-pumps">Sump Pumps &amp; Backwater</option><option value="water-softeners">Water Softeners &amp; Filtration</option></select>
+</div>
+<div class="field" data-field="">
+<label for="msg-loc-innerkip">Briefly describe your issue <span class="req">*</span></label>
 <textarea aria-describedby="msg-error-loc-innerkip" class="input" id="msg-loc-innerkip" maxlength="6000" name="message" placeholder="e.g. Water heater leaking or drain backed up." required=""></textarea>
 <span class="error-text" id="msg-error-loc-innerkip">Tell us briefly what you need.</span>
 </div>
-<details class="optional-details"><summary>Add project or address details (optional)</summary><div class="field"><label for="service-loc-innerkip">Project interest (optional)</label><select class="input" id="service-loc-innerkip" name="service"><option value="">Not sure yet</option><option value="water-heaters">Water Heaters in Woodstock, Ontario</option><option value="drain-cleaning">Drain Cleaning in Woodstock, Ontario</option><option value="repiping">Repiping in Woodstock, Ontario</option><option value="fixtures-toilets">Fixtures &amp; Toilets in Woodstock, Ontario</option><option value="leak-detection">Leak Detection &amp; Repair in Woodstock, Ontario</option><option value="sump-pumps">Sump Pumps &amp; Backwater in Woodstock, Ontario</option><option value="water-softeners">Water Softeners &amp; Filtration in Woodstock, Ontario</option></select></div><div class="field row">
-<div data-field=""><label for="addr-loc-innerkip">Street Address</label><input autocomplete="address-line1" class="input" id="addr-loc-innerkip" maxlength="254" name="address" placeholder="123 Main St" type="text"/></div>
-<div data-field=""><label for="postal-loc-innerkip">Postal Code</label><input aria-describedby="postal-error-loc-innerkip" autocomplete="postal-code" class="input" id="postal-loc-innerkip" maxlength="7" name="postal" placeholder="N1A 1A1" type="text"/><span class="error-text" id="postal-error-loc-innerkip">Enter a valid Canadian postal code, or leave this blank.</span></div>
-</div></details>
-<button class="btn btn-primary btn-lg btn-block" disabled="" type="submit"><svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"></path><path d="m21.854 2.147-10.94 10.939"></path></svg> Get A Free Quote</button>
+<button class="btn btn-primary btn-lg btn-block" disabled="" type="submit"><svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"></path><path d="m21.854 2.147-10.94 10.939"></path></svg> Request My Free Quote</button>
 </div>
 </form></div>
 </div>
@@ -229,7 +242,7 @@
 <div class="mobile-bar mobile-bar--single">
 <a class="btn btn-primary" href="/contact/#quote"><svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"></path><path d="m21.854 2.147-10.94 10.939"></path></svg> Get A Free Quote</a>
 </div>
-<script defer="" src="/assets/js/main.js?v=20261014-form-cleanup"></script>
+<script defer="" src="/assets/js/main.js?v=20261015-form-restoration"></script>
 <!-- Chat widget (n8n workflow; zero-config, skinned from
      theme-color meta, brand from og:site_name). Disable per-site with
      <meta name="hc-chat" content="off"> in the page head. -->

@@ -169,7 +169,7 @@
         var input = form.querySelector('[name="' + name + '"]');
         if (!input) return;
         input.disabled = preferred ? name !== choice : false;
-        input.required = preferred ? name === choice : name === "email";
+        if (preferred) input.required = name === choice;
         var field = input.closest("[data-contact-field]");
         if (field) { field.hidden = preferred ? name !== choice : false; field.classList.remove("invalid"); }
         input.removeAttribute("aria-invalid");
