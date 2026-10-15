@@ -81,7 +81,7 @@
 <span class="badge"><svg aria-hidden="true" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M3 11h3a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"></path><path d="M18 11h3v7a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-6a1 1 0 0 1 1-1z"></path><path d="M3 11a9 9 0 0 1 18 0"></path><path d="M18 19a3 3 0 0 1-3 3h-3"></path></svg></span>
 <div><p class="quote-card__title" style="font-size:1.15rem;font-weight:700;margin:0;line-height:1.2;color:var(--ink)">Get A Free Quote</p></div>
 </div>
-<p class="sub">Choose email or a phone call for follow-up. Coverage and appointments require confirmation.</p>
+<p class="sub">The team will contact you about your request. Coverage and appointments require confirmation.</p>
 <p class="form-fallback" data-form-fallback="">If the form is unavailable, email <a href="mailto:contact@woodstockplumbingpros.ca">contact@woodstockplumbingpros.ca</a> with your request.</p>
 <div aria-live="polite" class="form-status" role="status" tabindex="-1"></div>
 <div class="form-grid">
@@ -90,18 +90,14 @@
 <input aria-describedby="name-error-hero" autocomplete="name" class="input" id="name-hero" maxlength="100" name="name" placeholder="Jane Doe" required="" type="text"/>
 <span class="error-text" id="name-error-hero">Please enter your name.</span>
 </div>
-<div class="field" data-field="">
-<label for="preferred-hero">How should we contact you? <span class="req">*</span></label>
-<select class="input" id="preferred-hero" name="preferred_contact" required=""><option value="email">Email</option><option value="phone">Phone call</option></select>
-</div>
 <div class="field" data-contact-field="email" data-field="">
 <label for="email-hero">Email <span class="req">*</span></label>
 <input aria-describedby="email-error-hero" autocomplete="email" class="input" id="email-hero" maxlength="254" name="email" placeholder="you@email.com" required="" type="email"/>
 <span class="error-text" id="email-error-hero">Enter a valid email address.</span>
 </div>
-<div class="field" data-contact-field="phone" data-field="" hidden="">
-<label for="phone-hero">Phone <span class="req">*</span></label>
-<input aria-describedby="phone-error-hero" autocomplete="tel" class="input" disabled="" id="phone-hero" inputmode="tel" maxlength="40" name="phone" placeholder="(905) 000-0000" type="tel"/>
+<div class="field" data-contact-field="phone" data-field="">
+<label for="phone-hero">Phone (optional)</label>
+<input aria-describedby="phone-error-hero" autocomplete="tel" class="input" id="phone-hero" inputmode="tel" maxlength="40" name="phone" placeholder="(905) 000-0000" type="tel"/>
 <span class="error-text" id="phone-error-hero">Enter a valid phone number with at least 10 digits.</span>
 </div>
 <div class="field" data-field="">
@@ -118,7 +114,6 @@
 <div data-field=""><label for="addr-hero">Street Address</label><input autocomplete="address-line1" class="input" id="addr-hero" maxlength="254" name="address" placeholder="123 Main St" type="text"/></div>
 <div data-field=""><label for="postal-hero">Postal Code</label><input aria-describedby="postal-error-hero" autocomplete="postal-code" class="input" id="postal-hero" maxlength="7" name="postal" placeholder="N1A 1A1" type="text"/><span class="error-text" id="postal-error-hero">Enter a valid Canadian postal code, or leave this blank.</span></div>
 </div></details>
-<p class="recipient-note">Headbanger Marketing receives your request and shares it with Jayden's Mechanical for assessment. Coverage and any appointment are confirmed separately.</p>
 <button class="btn btn-primary btn-lg btn-block" disabled="" type="submit"><svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"></path><path d="m21.854 2.147-10.94 10.939"></path></svg> Get A Free Quote</button>
 </div>
 </form></div>
@@ -213,7 +208,7 @@
 <div class="mobile-bar mobile-bar--single">
 <a class="btn btn-primary" href="/contact/#quote"><svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"></path><path d="m21.854 2.147-10.94 10.939"></path></svg> Get A Free Quote</a>
 </div>
-<script defer="" src="/assets/js/main.js?v=20261013-audit4"></script>
+<script defer="" src="/assets/js/main.js?v=20261014-form-cleanup"></script>
 <!-- Chat widget (n8n workflow; zero-config, skinned from
      theme-color meta, brand from og:site_name). Disable per-site with
      <meta name="hc-chat" content="off"> in the page head. -->

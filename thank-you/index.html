@@ -121,7 +121,7 @@
 </div>
 </div>
 </footer>
-<script defer="" src="/assets/js/main.js?v=20261013-audit4"></script>
+<script defer="" src="/assets/js/main.js?v=20261014-form-cleanup"></script>
 <!-- Chat widget (n8n workflow; zero-config, skinned from
      theme-color meta, brand from og:site_name). Disable per-site with
      <meta name="hc-chat" content="off"> in the page head. -->
@@ -133,7 +133,7 @@ try {
   const saved = JSON.parse(sessionStorage.getItem('quote-confirmation') || 'null');
   if(saved && ['email','phone'].includes(saved.channel) && Date.now()-saved.time>=0 && Date.now()-saved.time<3600000){
     document.querySelector('[data-receipt-heading]').textContent='Request received';
-    document.querySelector('[data-receipt-description]').textContent="Headbanger Marketing has received your request for Jayden's Mechanical to review. Coverage, pricing, availability and any appointment require separate confirmation.";
+    document.querySelector('[data-receipt-description]').textContent="Your request has been received for review. Coverage, pricing, availability and any appointment require separate confirmation.";
     document.querySelector('[data-receipt-badge]').classList.remove('ty__check--neutral');
     document.querySelectorAll('[data-status-icon]').forEach(icon=>icon.hidden=icon.dataset.statusIcon!=='received');
     document.querySelectorAll('[data-followup-icon]').forEach(icon=>icon.hidden=icon.dataset.followupIcon!==saved.channel);

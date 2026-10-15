@@ -168,10 +168,10 @@
       ["email", "phone"].forEach(function (name) {
         var input = form.querySelector('[name="' + name + '"]');
         if (!input) return;
-        input.disabled = name !== choice;
-        input.required = name === choice;
+        input.disabled = preferred ? name !== choice : false;
+        input.required = preferred ? name === choice : name === "email";
         var field = input.closest("[data-contact-field]");
-        if (field) { field.hidden = name !== choice; field.classList.remove("invalid"); }
+        if (field) { field.hidden = preferred ? name !== choice : false; field.classList.remove("invalid"); }
         input.removeAttribute("aria-invalid");
       });
     }
@@ -241,7 +241,7 @@
       var service = value("service");
       var interest = form.querySelector('[name="service"] option:checked');
       if (service) message = "Project interest: " + (interest ? interest.textContent.trim() : service) + "\n" + message;
-      var submittedChannel = value("preferred_contact");
+      var submittedChannel = value("preferred_contact") || "email";
       var payload = new URLSearchParams({
         "1.3": value("name"), "2": value("email"), "3": message, "4": value("phone"),
         "5.1": value("address"), "5.3": value("city"), "5.5": value("postal"),
@@ -267,7 +267,7 @@
         if (!accepted(ack)) throw new Error("Receipt unconfirmed");
         received = true;
         form.dataset.receiptConfirmed = "true";
-        showStatus(true, "Thank you. Headbanger Marketing has received your request for Jayden's Mechanical to review. Coverage, availability and any appointment require separate confirmation. " + (submittedChannel === "phone" ? "Watch for a phone call using the number you provided." : "Check the email address you provided for follow-up."));
+        showStatus(true, "Thank you. Your request has been received for review. Coverage, availability and any appointment require separate confirmation. " + (submittedChannel === "phone" ? "Watch for a phone call using the number you provided." : "Check the email address you provided for follow-up."));
         var confirmationStored = false;
         try { sessionStorage.removeItem("quote-context"); sessionStorage.setItem("quote-confirmation", JSON.stringify({ channel: submittedChannel, time: Date.now() })); confirmationStored = true; } catch (_) {}
         if (confirmationStored && form.dataset.redirectOnSuccess) window.location.href = form.dataset.redirectOnSuccess;

@@ -112,18 +112,14 @@
 <input aria-describedby="name-error-repiping" autocomplete="name" class="input" id="name-repiping" maxlength="100" name="name" placeholder="Jane Doe" required="" type="text"/>
 <span class="error-text" id="name-error-repiping">Please enter your name.</span>
 </div>
-<div class="field" data-field="">
-<label for="preferred-repiping">How should we contact you? <span class="req">*</span></label>
-<select class="input" id="preferred-repiping" name="preferred_contact" required=""><option value="email">Email</option><option value="phone">Phone call</option></select>
-</div>
 <div class="field" data-contact-field="email" data-field="">
 <label for="email-repiping">Email <span class="req">*</span></label>
 <input aria-describedby="email-error-repiping" autocomplete="email" class="input" id="email-repiping" maxlength="254" name="email" placeholder="you@email.com" required="" type="email"/>
 <span class="error-text" id="email-error-repiping">Enter a valid email address.</span>
 </div>
-<div class="field" data-contact-field="phone" data-field="" hidden="">
-<label for="phone-repiping">Phone <span class="req">*</span></label>
-<input aria-describedby="phone-error-repiping" autocomplete="tel" class="input" disabled="" id="phone-repiping" inputmode="tel" maxlength="40" name="phone" placeholder="(905) 000-0000" type="tel"/>
+<div class="field" data-contact-field="phone" data-field="">
+<label for="phone-repiping">Phone (optional)</label>
+<input aria-describedby="phone-error-repiping" autocomplete="tel" class="input" id="phone-repiping" inputmode="tel" maxlength="40" name="phone" placeholder="(905) 000-0000" type="tel"/>
 <span class="error-text" id="phone-error-repiping">Enter a valid phone number with at least 10 digits.</span>
 </div>
 <div class="field" data-field="">
@@ -140,7 +136,6 @@
 <div data-field=""><label for="addr-repiping">Street Address</label><input autocomplete="address-line1" class="input" id="addr-repiping" maxlength="254" name="address" placeholder="123 Main St" type="text"/></div>
 <div data-field=""><label for="postal-repiping">Postal Code</label><input aria-describedby="postal-error-repiping" autocomplete="postal-code" class="input" id="postal-repiping" maxlength="7" name="postal" placeholder="N1A 1A1" type="text"/><span class="error-text" id="postal-error-repiping">Enter a valid Canadian postal code, or leave this blank.</span></div>
 </div></details>
-<p class="recipient-note">Headbanger Marketing receives your request and shares it with Jayden's Mechanical for assessment. Coverage and any appointment are confirmed separately.</p>
 <button class="btn btn-primary btn-lg btn-block" disabled="" type="submit"><svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"></path><path d="m21.854 2.147-10.94 10.939"></path></svg> Get A Free Quote</button>
 </div>
 </form></div>
@@ -240,7 +235,7 @@
 <div class="mobile-bar mobile-bar--single">
 <a class="btn btn-primary" href="/contact/#quote"><svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"></path><path d="m21.854 2.147-10.94 10.939"></path></svg> Get A Free Quote</a>
 </div>
-<script defer="" src="/assets/js/main.js?v=20261013-audit4"></script>
+<script defer="" src="/assets/js/main.js?v=20261014-form-cleanup"></script>
 <!-- Chat widget (n8n workflow; zero-config, skinned from
      theme-color meta, brand from og:site_name). Disable per-site with
      <meta name="hc-chat" content="off"> in the page head. -->
